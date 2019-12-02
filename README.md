@@ -1,2 +1,2 @@
 # Project
-Learn
+Learn about the Project
