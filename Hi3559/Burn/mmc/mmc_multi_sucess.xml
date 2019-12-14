@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<Partition_Info>
+<Part Sel="1" PartitionName="fastboot" FlashType="emmc" FileSystem="none" Start="0" Length="1M" SelectFile="E:\IOE\Object\Hi3559\Burn\Image\emmc_image_glibc_multi-core_arm64\u-boot-hi3559av100.bin"/>
+<Part Sel="1" PartitionName="kernel" FlashType="emmc" FileSystem="none" Start="1M" Length="20M" SelectFile="E:\IOE\Object\Hi3559\Burn\Image\emmc_image_glibc_multi-core_arm64\uImage_hi3559av100_multi-core"/>
+<Part Sel="1" PartitionName="rootfs" FlashType="emmc" FileSystem="ext3/4" Start="21M" Length="200M" SelectFile="E:\IOE\Object\Hi3559\Burn\Image\emmc_image_glibc_multi-core_arm64\rootfs_hi3559av100_96M.ext4"/>
+</Partition_Info>
