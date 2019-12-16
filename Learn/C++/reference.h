@@ -5,8 +5,6 @@
 #ifndef C__TEST_REFERENCE_H
 #define C__TEST_REFERENCE_H
 
-#endif //C__TEST_REFERENCE_H
-
 int& test(int *p11, int a)//从函数中返回引用
 {
     return p11[a];
@@ -25,4 +23,4 @@ void Reference() {
         cout << i11[m] << endl;
     }
 }
-
+#endif //C__TEST_REFERENCE_H

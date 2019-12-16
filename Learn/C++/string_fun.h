@@ -5,8 +5,6 @@
 #ifndef C__TEST_STRING_FUN_H
 #define C__TEST_STRING_FUN_H
 
-#endif //C__TEST_STRING_FUN_H
-
 void string_length0()
 {
     cout << setfill('*') << setw( 20) << "length" << setfill('*') << setw( 15) << "*"<< endl;
@@ -41,3 +39,5 @@ void string_length1()
     cout << sizeof(ss) << endl;//ss 是指向字符串常量的字符指针，sizeof 获得的是一个指针的之所占的空间,应该是长整型的，所以是 8。
     cout << sizeof(*ss) << endl;//*ss 是第一个字符 其实就是获得了字符串的第一位 '1' 所占的内存空间，是 char 类型的，占了 1 位
 }
+
+#endif //C__TEST_STRING_FUN_H
