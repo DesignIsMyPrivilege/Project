@@ -1,3 +1,5 @@
+[toc]
+
 # Project
 Learn about the Project
 ## C
