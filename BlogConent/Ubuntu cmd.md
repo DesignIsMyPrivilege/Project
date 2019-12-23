@@ -24,3 +24,12 @@ sudo tail -n 10 /var/log/auth.log#查看登陆日志
   1. 当前shell输入chsh，按照提示输入shell
   2. 切换到管理员，`vi /etc/passwd`，在需要指定的用户后添加shell
 
+##  nvidia-smi 实时刷新
+
+`watch -n 0.1 -d nvidia-smi`     #每隔0.1秒刷新一次
+
+## apt-get update和upgrade区别
+
+`apt-get update` 是同步 `/etc/apt/sources.list` 和 `/etc/apt/sources.list.d` 中列出的源的索引，这样才能获取到最新的软件包
+
+`upgrade` is used to ___install___ the newest versions of all packages currently installed on the system from the sources enumerated in` /etc/apt/sources.list`. Packages currently installed with new versions available are retrieved and upgraded.
