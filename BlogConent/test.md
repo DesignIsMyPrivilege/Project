@@ -37,3 +37,6 @@ _斜体文字_ __粗体文字__  ___粗斜体文字___
 Markdown教程[^链接]
 
 [^链接]:https://www.appinn.com/markdown/
+
+<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>del</kbd>
+
