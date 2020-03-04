@@ -4,6 +4,10 @@
 
 选择适合Ubuntu distribution的稳定主版本（**注：**内核的选择，应当选择适应于当前使用distribution的稳定master版本内核）。
 
+```shell
+sudo dpkg --get-selections  |  grep  'linux' #查看内核详细信息
+```
+
 Ubuntu内核列表网址`https://kernel.ubuntu.com/~kernel-ppa/mainline/?C=N;O=D`，选择需要的版本，进入文件夹，针对个人电脑，通过以下命令下载内核（以5.1.8版本内核为例）：
 
 ```shell
