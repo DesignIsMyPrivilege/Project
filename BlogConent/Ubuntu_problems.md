@@ -33,4 +33,50 @@ sudo dpkg -i libssl1.1_1.1.0g-2ubuntu4_amd64.deb
 2. 使用`sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys number`来重新下载对应number的密钥
 3. 使用`sudo apt-get update`重新更新源
 
+## Ubuntu安装多版本[GCC](https://www.cnblogs.com/zzb-Dream-90Time/p/9656545.html)
 
+### 源安装
+
+1. 查看gcc原版本
+
+   ```shell
+   gcc -v
+   g++ -v
+   ```
+
+2. 安装需要的GCC和G++版本
+
+   ```shell
+   sudo apt-get install gcc-xxx g++-xxx
+   ```
+
+   安装完成后，查看当前系统中已安装的gcc和g++版本
+
+   ```shell
+   ls /usr/bin/gcc*
+   ls /usr/bin/g++*
+   ```
+
+3. 将某个版本的gcc加入候选，最后的数字是优先级
+
+   ```shell
+   sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-3.4 50#自己安装的gcc版本
+   sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 60#原来的gcc版本
+   ###g++配置
+   sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/g++-3.4 50#自己安装的gcc版本
+   sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/g++-5 60#原来的gcc版本
+   ```
+
+4. 通过如下指令设置版本
+
+   ```shell
+   sudo update-alternatives --config gcc
+   ###g++配置
+   sudo update-alternatives --config g++
+   ```
+
+**注意：**当切换使用了其他版本的gcc时，自行选择是否需要切换g++的版本，在项目遇到c++代码会使用到gcc。
+
+### 手动安装
+
+低版本的[安装](https://blog.csdn.net/u013547134/article/details/83586124)
