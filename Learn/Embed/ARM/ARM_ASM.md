@@ -2,9 +2,9 @@
 
 Operation{cond}{state} Rd,Rn,Operand2
 
-<img src="C:\Users\Think\AppData\Roaming\Typora\typora-user-images\image-20200304202121454.png" style="zoom:60%">
+<img src="condition_code.png" alt="Image text" style="zoom:60%;" />
 
-<img src="C:\Users\Think\AppData\Roaming\Typora\typora-user-images\image-20200304202940032.png" alt="image-20200304202940032" style="zoom:50%;" />
+<img src="condition_code2.png" alt="Image text" style="zoom:50%;" />
 
 向寄存器中一个值添加100
 
