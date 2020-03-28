@@ -347,7 +347,7 @@ automake --add-missing
 make dist##将程序打包
 ```
 
-<img src="E:\IOE\Autoconf-automake-process.svg" style="zoom:50%;" />
+![Image text](Autoconf-automake-process.svg)
 
 ### C语言常用关键字及运算符操作
 
