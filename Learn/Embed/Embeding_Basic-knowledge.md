@@ -267,6 +267,7 @@ prog3:prog3.o sort1.o utils.o
 
 ```makefile
 include proc/makefile#包含
+#嵌套
 subsystem:
 	cd subdir && gcc -c main.c
 #subsystem:
@@ -288,6 +289,8 @@ makefile管理命令
 | -I dir  |    指定被包含的makefile所在目录    |
 
 ##### AutoTools
+
+用来自动生成Makefile（可以在Gnu官网搜索Autoconf）
 
 Files used in preparing a software package for distribution, when using just Autoconf:
 
@@ -327,6 +330,24 @@ Files used in configuring a software package:
                     +--> config.status* -+               +--> make*
      Makefile.in ---'                    `-> Makefile ---'
 ```
+
+完整的命令：
+
+```shell
+autoscan
+mv configure.scan configure.ac
+##编辑配置configure.ac，配置输出等
+vi configure.ac##添加AM_INIT_AUTOMAKE(输出文件名，版本号)的AC的宏
+aclocal#展开宏
+autoconf
+autoheader
+##配置Makefile.am
+automake --add-missing
+./configure##生成Makefile文件
+make dist##将程序打包
+```
+
+<img src="E:\IOE\Autoconf-automake-process.svg" style="zoom:50%;" />
 
 ### C语言常用关键字及运算符操作
 

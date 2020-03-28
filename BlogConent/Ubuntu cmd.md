@@ -33,3 +33,10 @@ sudo tail -n 10 /var/log/auth.log#查看登陆日志
 `apt-get update` 是同步 `/etc/apt/sources.list` 和 `/etc/apt/sources.list.d` 中列出的源的索引，这样才能获取到最新的软件包
 
 `upgrade` is used to ___install___ the newest versions of all packages currently installed on the system from the sources enumerated in` /etc/apt/sources.list`. Packages currently installed with new versions available are retrieved and upgraded.
+
+## vi命令
+
+从A文件拷贝内容到B文件：
+
+* A文件中："任意单个变量名+需要复制的行数+yy，例如`"a5yy`；注意，从当前闪光处开始往下复制，如果在文件最后则无法复制
+* B文件中："A中输入的变量名+p，例如`"ap`
