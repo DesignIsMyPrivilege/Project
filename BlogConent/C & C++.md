@@ -1,5 +1,5 @@
 # C & C++
-
+ONFLICT (CONFLICT (content): Merge conflictCONFLICT (content): Merge conflictCONFLICT (content): Merge conflictCONFLICT (content): Merge conflictcontent): Merge conflictCONFLICT (content): Merge conflictCONFLICT (content): Merge conflictCONFLICT (content): Merge conflictCONFLICT (content): Merge conflictCONFLICT (content): Merge conflictCONFLICT (content): Merge conflictCONFLICT (content): Merge conflict
 ## Programing Trick
 
 ![](/Photo/无符号到有符号的转换.png)
@@ -176,7 +176,11 @@ Count is 5
 
 这两种方式的类型和安全检查不同、编译器处理不同、存储方式不同、定义域不同、定义后能否取消、是否可以做函数参数
 
+<<<<<<< HEAD
 ![](Photo/const_char.png)
+=======
+![](./Photo/const char.png)
+>>>>>>> 3eba211cd1eabe70d00d4f2f080257236de685d7
 
 ## **volatileP**
 
