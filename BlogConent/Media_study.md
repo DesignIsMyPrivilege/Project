@@ -41,7 +41,7 @@ YUV分为planar和packed两大类
 
 YUV420分为YUV420p、YUV420sp两种格式
 
-![](/Photo/Yuv420.png)
+![](Photo/Yuv420.png)
 
 1. YUV420p为planer平面模式，YUV分别在不同平面，也就是三个平面
    * YUV420p又分为YU12、YV12两种形式
