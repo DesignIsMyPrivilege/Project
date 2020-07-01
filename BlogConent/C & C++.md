@@ -1,16 +1,57 @@
 # C & C++
 
+## Programing Trick
+
+![](无符号到有符号的转换.png)
+
+逻辑与和逻辑或：
+
+```c++
+#include<iostream>
+
+int add(int a){
+    int temp = 0;
+    a && (temp = add(a-1));//(!a) || (temp = add(a-1))
+    return temp+a;
+}
+
+int main(){
+    sum = add(10);
+    stdcout << sum << std::endl;
+    
+    return 0;
+}
+```
+
 ## C & C++相同点
 
 ```c++
 #define   //define宏定义只是字符替换，编译时没有检查错误的功能
 ```
 
+数组在使用时可以是一个含有变量的表达式，但是，在数组声明时必须用常量表达式。例如：
+
+```c++
+const int a=19;
+long b[a];//合法
+
+const int a=5;
+long b[a+5];//合法
+
+int a=19;
+long b[a+5];//不合法
+
+int a=19;
+long b[(const int)a];//合法
+```
+
 ## C & C++不同点
 
 ### NULL的区别
 
-NULL表示指针不指向任何对象，C和C++中的NULL不等价，
+NULL表示指针不指向任何对象，C和C++中的NULL不等价
+
+&：取址	*：取值
 
 #### C中NULL为
 
@@ -38,6 +79,118 @@ int main(){
 	fun(nullptr);//输出2，nullptr 为空指针常量。是指针类型
 }
 ```
+
+## C++中的存储类
+
+### static
+
+存储在静态数据区的变量会在程序刚开始运行时就完成初始化，也是唯一的一次初始化。共有两种变量存储在静态存储区：全局变量和 static 变量，只不过和全局变量比起来，static 可以控制变量的可见范围，说到底 static 还是用来隐藏的。
+
+**static 修饰类的成员变量**
+
+- 1). 静态成员变量是先于类的对象而存在
+- 2). 这个类的所有对象共用一个静态成员
+- 3). 如果静态成员是公有的，那么可以直接通过类名调用
+- 4). 静态成员数据在声明时候类外初始化
+
+```c++
+#include <iostream>
+
+using namespace std;
+class Data
+{
+public:
+    Data(){}
+    ~Data(){}
+    void show()
+    {
+        cout<<this->data<<" "<<number<<endl;
+    }
+
+    static void showData()//先于类的对象而存在
+    {
+        //这方法调用的时候不包含this指针
+        cout<<" "<<number<<endl;
+    }
+
+private:
+    int data;
+public:
+    static int number; //静态数据在声明时候类外初始化
+};
+int Data::number=0;//静态成员初始化
+
+int main()
+{
+    Data::showData();//通过类名直接调用
+
+
+    Data::number = 100;//通过类名直接使用
+    Data d;
+    d.show();
+    d.showData();//通过对象调用
+
+    cout << "Hello World!" << endl;
+    return 0;
+}
+```
+
+### extern
+
+```c++
+#include <iostream>
+ 
+int count ;
+extern void write_extern();
+ 
+int main()
+{
+   count = 5;
+   write_extern();
+}
+
+#include <iostream>
+ 
+extern int count;
+ 
+void write_extern(void)
+{
+   std::cout << "Count is " << count << std::endl;
+}
+```
+
+```bash
+$ g++ main.cpp support.cpp -o write
+$ ./write
+Count is 5
+```
+
+### thread_local
+
+使用 thread_local 说明符声明的变量仅可在它在其上创建的线程上访问。 变量在创建线程时创建，并在销毁线程时销毁。 每个线程都有其自己的变量副本。
+
+## C++定义常量
+
+- 使用 **#define** 预处理器（#define identifier value）
+- 使用 **const** 关键字。（const type variable = value;）
+
+这两种方式的类型和安全检查不同、编译器处理不同、存储方式不同、定义域不同、定义后能否取消、是否可以做函数参数
+
+![](const char.png)
+
+## **volatile**
+
+修饰符 **volatile** 告诉编译器不需要优化volatile声明的变量，让程序可以直接从内存中读取变量。对于一般的变量编译器会对变量进行优化，将内存中的变量值放在寄存器中以加快读写效率。
+
+volatile 关键字是一种类型修饰符，用它声明的类型变量表示可以被某些编译器未知的因素更改，比如：操作系统、硬件或者其它线程等。遇到这个关键字声明的变量，编译器对访问该变量的代码就不再进行优化，从而可以提供对特殊地址的稳定访问。
+
+线程并发访问共享变量时，一个线程改变了变量的值，怎样让改变后的值对其它线程 visible。一般说来，volatile用在如下的几个地方：
+
+1. 中断服务程序中修改的供其它程序检测的变量需要加 volatile；
+
+2. 多任务环境下各任务间共享的标志应该加 volatile；
+
+3. 存储器映射的硬件寄存器通常也要加 volatile 说明，因为每次对它的读写都可能由不同意义；
 
 ## 调用系统头文件
 
@@ -143,6 +296,8 @@ vector<int>obj; //创建一个向量存储容器int
 //Vector< vector< int> >v; 二维向量，这里最外的<>要有空格。否则在比较旧的编译器下无法通过
 obj.push_back();//在数组的最后添加一个数据
 obj.pop_back();//去掉数组的最后一个数据
+obj.clear();//清除容器中所有数据
+obj.size();//当前使用数据的大小
 ```
 
 [^参考vector]:https://www.runoob.com/w3cnote/cpp-vector-container-analysis.html
