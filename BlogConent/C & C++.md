@@ -2,7 +2,7 @@
 
 ## Programing Trick
 
-![](无符号到有符号的转换.png)
+![](/photo/无符号到有符号的转换.png)
 
 逻辑与和逻辑或：
 
@@ -176,7 +176,7 @@ Count is 5
 
 这两种方式的类型和安全检查不同、编译器处理不同、存储方式不同、定义域不同、定义后能否取消、是否可以做函数参数
 
-![](const char.png)
+![](/photo/const char.png)
 
 ## **volatile**
 
