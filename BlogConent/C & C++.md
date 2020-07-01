@@ -2,7 +2,7 @@
 
 ## Programing Trick
 
-![](/Photo/无符号到有符号的转换.png)
+![](./Photo/无符号到有符号的转换.png)
 
 逻辑与和逻辑或：P
 
