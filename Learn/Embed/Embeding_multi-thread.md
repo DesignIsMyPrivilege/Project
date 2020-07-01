@@ -1011,7 +1011,7 @@ IP地址通常由数字加点（192.168.0.1）的形式表示，而在struct in_
 
 字节序转换，32bit的整数（0x01234567）从地址0x100开始：
 
-![Image text](endian.jpg)
+![](Photo/endian.jpg)
 
 htons把unsigned short类型从主机序转换到网络序
 

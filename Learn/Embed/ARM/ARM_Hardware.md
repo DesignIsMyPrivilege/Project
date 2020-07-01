@@ -47,7 +47,7 @@ NEON是基于SIMD的改进，技术可加速多媒体和信号处理算法
 
 缓存结构总结
 
-![Image text](Cache_structure.png)
+![Image text](Photo/Cache_structure.png)
 
 ## MMU存储管理单元
 
@@ -76,7 +76,7 @@ F -->|"缺页的情况下"|G(磁盘F)
 1. 如果不缺页，直接读物理内存
 2. 如果缺页，则把控制权交给操作系统，操作系统一般是从磁盘地址去取
 
-加快地址转换TLB
+加快地址转换TLB（TLB是快表：为页表的Cache，存储了最可能被访问到的页表项，省去了查找整个页表的时间）
 
 1. 页在主存中，只需要创建缺失的TLB表项
 2. 页不存在主存中，需要将控制权交给操作系统来解决缺页
@@ -160,7 +160,7 @@ Else
 
 程序地址：程序存储的地址
 
-IROM：程序课直接在其上运行
+IROM：程序可直接在其上运行
 
 1. 运行IROM代码
 2. 搬运bootloader第一段代码到ISRAM运行
@@ -185,9 +185,9 @@ IROM：程序课直接在其上运行
 
 3. 地址都被芯片公司重新定义了，去芯片公司的datasheet中寻找memory map找重定义的位置
 
-   **总的选择过程**：CPU发出地址，地址经过地址选择器，地址选择器确定发出的地址的是在那一块地址区间，对选定的地址区间进行访问；如果访问的地址属于片外地址，并且片外地址有多个分块的情况下，地址选择器一般通过CS（chip select）引脚，使地址对应的片外芯片使能（片选功能），其他芯片disable，实现在有限的外部地址总线的情况下，对多个外部线片的访问
+   **总的选择过程**：CPU发出地址，地址经过地址选择器，地址选择器确定发出的地址的是在那一块地址区间，对选定的地址区间进行访问；如果访问的地址属于片外地址，并且片外地址有多个分块的情况下，地址选择器一般通过CS（chip select）引脚，使地址对应的片外芯片使能（片选功能），其他芯片disable，实现在有限的外部地址总线的情况下，对多个外部芯片的访问
 
-   
+   DRAM在
 
    片内资源：一般寻找片内寄存器SFR
 
@@ -195,15 +195,67 @@ IROM：程序课直接在其上运行
 
    ​	**方法**：芯片是否挂载地址总线或者数据总线；如果挂载了，就先寻找该芯片类似CS/enable功能的片选引脚，查看该引脚对应CPU上的哪个引脚，然后查看那些地址可控制该引脚；否则寻找片内控制器。
 
-   > DRAM空间
+   ![](Photo/PC_DRAM.png)
+
+   ![](Photo/DRAM存取_1bit.png)
+
+   ![](Photo/DRAM存取_2bit4bit8bit.png)
+
+   ![](Photo/内存示意图.png)
+
+   ![](Photo/DRAM存取_时序.png)
+
+   DRAM（Dynamic Random Access Memory）依靠内部的小电容充放电进行存储，由于内部电容很小，所以需要对DRAM内存进行周期性的更新（读取电容的值，将该值重新回写），防止电容漏电，数据消失；因此DRAM的控制器相比SRAM（Static Random-Access Memory）更复杂。
+
+   > DRAM（动态随机存取存储器）空间
    >
    > 分块	每一个分块[起始地址---结束地址] 
    >
    > 程序访问的地址，落在哪个分块区间上，CPU就通过CS（chip select）引脚来自动的对该分块的片选信号置为有效
-
-   > SROM空间
    >
-   > 分块
+   > SDRAM（同步动态随机存取内存），相比DRAM多了时钟信号，进行同步
+
+   > SRAM（Static Random-Access Memory：静态随机存取存储器）
+   >
+   > 其保存一个位的数据，需要用到四到六个晶体管；而DRAM只需要一个小电容，所以DRAM的容量一般比SRAM的大。
+
+   >DDR（Double Data Rate）双倍速率，其速率是普通RAM速率的两倍
+
+   ![](Photo/DDR2-Device的内部结构时序.png)
+
+   ![](Photo/DDR2-操作状态转换图-读.png)
+
+   DDR初始化reg配置：
+
+   |    缩写     | 全称                                                         |
+   | :---------: | ------------------------------------------------------------ |
+   |   t_refi    | Average Periodic Refresh Interval                            |
+   |    t_rfc    | Refresh Cycle time                                           |
+   |    t_rrd    | Row activation to Row activation Delay                       |
+   |    t_rp     | Row Precharge                                                |
+   |    t_rcd    | Row to Column command Delay                                  |
+   |    t_rc     | Row Cycle                                           t_rc = t_ras + t_rp |
+   |    t_ras    | Row Acess Strobe                                             |
+   |    t_wtr    | Write to Read delay time                                     |
+   |    t_wr     | Write Recovery time                                          |
+   |    t_rtp    | Ready to Precharge                                           |
+   | t_cl(t_cas) | Column Acess Strobe latency                                  |
+   |    t_faw    | Four Active Window                                           |
+   |    t_al     | Added Latency to column access                               |
+   |  **t_rl**   | **t_rl = t_al + t_cl**                                       |
+   |    t_wl     | t_wl = t_rl - 1                                              |
+
+   DMC：Dynamic Memory Controller
+
+   DQ：数据
+
+   DQS：源同步时钟
+
+   DLL：Delay Locked Loop延时锁环
+
+   PLL：Phase Locked Loop锁相环
+
+   
 
    SDRAM
 
@@ -233,7 +285,7 @@ boot + load
 
 **boot的前提条件**
 
-![SOC芯片结构](SOC芯片结构.png)
+![SOC芯片结构](Photo/SOC芯片结构.png)
 
 * 关闭看门狗、中断、MMU（在操作系统下才开始使用）、CACHE（数据cache）
 
@@ -495,7 +547,7 @@ UART的整个流程可分为：UART INIT、数据的send和recv
 
 ### 中断的概念
 
-![](中断流程.png)
+![](Photo/中断流程.png)
 
 PC、本身PC是顺序执行的，中断相当于打断PC运行的轨迹，将PC指向一个处理代码块，等待处理结束后，再恢复刚才被打断的PC的值，继续让PC运行。
 
@@ -505,7 +557,7 @@ PC、本身PC是顺序执行的，中断相当于打断PC运行的轨迹，将PC
 
 ### 中断控制器的介绍
 
-![](中断.png)
+![](Photo/中断.png)
 
 把多个中断源通过选择或者优先级比较，给CPU核心触发对应信号的一个工作；为了软件工程师可以知道这么多中断源，到底是哪个发生了请求，根据这个请求，做不同的事情。
 
@@ -581,9 +633,9 @@ Inter-integrated Circuit：内部整合电路，用在按键、显示、转换�
 
 **IIC总线**：半双工串行同步总线
 
-![](IIC.png)
+![](Photo/IIC.png)
 
-![](IIC信号时序.png)
+![](Photo/IIC信号时序.png)
 
 **IIC协议的介绍：**
 
@@ -655,8 +707,8 @@ NFCONF、NFCONT、NFCMD、NFADDR、NFDATA、NFSTAT
 
 
 
-<img src="推挽电路.png" style="zoom:50%;" />
+<img src="Photo/推挽电路.png" style="zoom:50%;" />
 
-<img src="开漏输出.png" style="zoom:50%;" />
+<img src="Photo/开漏输出.png" style="zoom:50%;" />
 
 早期的芯片的IO引脚输出能力有限，所以一般需要引脚接上拉电阻

@@ -2,9 +2,9 @@
 
 Operation{cond}{state} Rd,Rn,Operand2
 
-<img src="condition_code.png" alt="Image text" style="zoom:60%;" />
+<img src="Photo/condition_code.png" alt="Image text" style="zoom:60%;" />
 
-<img src="condition_code2.png" alt="Image text" style="zoom:50%;" />
+<img src="Photo/condition_code2.png" alt="Image text" style="zoom:50%;" />
 
 向寄存器中一个值添加100
 
