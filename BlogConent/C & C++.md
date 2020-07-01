@@ -2,9 +2,9 @@
 
 ## Programing Trick
 
-![](/photo/无符号到有符号的转换.png)
+![](/Photo/无符号到有符号的转换.png)
 
-逻辑与和逻辑或：
+逻辑与和逻辑或：P
 
 ```c++
 #include<iostream>
@@ -176,9 +176,9 @@ Count is 5
 
 这两种方式的类型和安全检查不同、编译器处理不同、存储方式不同、定义域不同、定义后能否取消、是否可以做函数参数
 
-![](/photo/const char.png)
+![](/Photo/const char.png)
 
-## **volatile**
+## **volatileP**
 
 修饰符 **volatile** 告诉编译器不需要优化volatile声明的变量，让程序可以直接从内存中读取变量。对于一般的变量编译器会对变量进行优化，将内存中的变量值放在寄存器中以加快读写效率。
 
