@@ -20,7 +20,7 @@ void Pointer()
     cout << "The value of the var:" << var << endl;
     cout << "The address of the var:" << &var << endl;
     cout << "The value of the p:" << *p << endl;
-    cout << "The address of the p:" << p << endl;
+    cout << "The address of the p:" << (int *)p << endl;
 //    cout << "The value of the prt:" << *prt << endl;
     cout << "The address of the prt:" << prt << endl;
 }
@@ -63,12 +63,12 @@ void Fun_pointer()
     b11[2]();
 }
 /*****************************Return_pointer:从函数返回指针**********************************/
-int *pointer()
+int *pointer(int num)
 {
     static int test[3];
 
     srand((unsigned)time(NULL));
-    for(int j = 0; j < 3; j++)
+    for(int j = 0; j < num; j++)
     {
         test[j] = rand();
         cout << test[j] << endl;

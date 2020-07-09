@@ -355,8 +355,18 @@ obj.clear();//清除容器中所有数据
 obj.size();//当前使用数据的大小
 ```
 
+1、对于数组来说是静态的，所以在创建数组的时候数组首元素的地址也就是数组的地址是确定的，所以在函数传参的时候将数组地址直接作为函数实参传入即可，因为会自动对该地址中的数据进行操作；
+
+2、vector定义的是一个动态数组，在不断申请空间的过程中可能会改变动态数组的首元素地址也就是动态数组的地址，可以理解为动态数组的长度动态位置也是动态的，所以不能将其地址作为参数传入函数，因为很可能已经变了
+
 [^参考vector]:https://www.runoob.com/w3cnote/cpp-vector-container-analysis.html
 [^简单认为]:vector是一个能够存放任意类型的动态数组。
+
+## C++ New
+
+new类似C中的malloc，对new后的内存进行释放，使用delete；delete和`delete []`的差别[^delete]
+
+[^delete]:(https://www.cnblogs.com/wkfvawl/p/10846851.html)
 
 ## C++ 库函数stringstream[^stringstream参考]
 

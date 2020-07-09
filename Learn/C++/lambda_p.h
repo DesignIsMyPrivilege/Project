@@ -5,7 +5,6 @@
 #ifndef C__TEST_LAMBDA_P_H
 #define C__TEST_LAMBDA_P_H
 
-#endif //C__TEST_LAMBDA_P_H
 
 void lambda_p()
 {
@@ -17,3 +16,4 @@ void lambda_p()
     cout << i << endl;
 }
 
+#endif //C__TEST_LAMBDA_P_H

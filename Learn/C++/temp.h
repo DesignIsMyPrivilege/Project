@@ -13,7 +13,7 @@
 //比如编写了一个交换两个整型int 类型的swap函数，这个函数就只能实现int 型，对double，字符这些类型无法实现，要实现这些类型的交换就要重新编写另一个swap函数。
 //使用模板的目的就是要让这程序的实现与类型无关，比如一个swap模板函数，即可以实现int 型，又可以实现double型的交换。
 //https://www.runoob.com/w3cnote/c-templates-detail.html
-//模板的声明或定义只能在全局、命名空间或类范围内进行，不能在局部范围、函数内进行
+//模板的声明或定义只能在全局、命名空间或类范围内进行，不能在局部范围、函数内进行，比如不能在main函数中声明或定义一个模板
 template <class T>//这里的class关键字和typename可以互换，两者没有区别，都是表明T是一个类型
 inline T Max(T a, T b)
 {
