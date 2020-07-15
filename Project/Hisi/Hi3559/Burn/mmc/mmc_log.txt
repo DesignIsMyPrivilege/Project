@@ -1,0 +1,540 @@
+Platform Version: 5.2.7
+HiBurn Version: 5.2.0
+HiSilicon Technologies Co., Ltd. All rights reserved. (C) 2011-2019
+
+
+Platform Version: 5.2.7
+HiBurn Version: 5.2.0
+HiSilicon Technologies Co., Ltd. All rights reserved. (C) 2011-2019
+
+
+Current Serial port selection: COM3
+
+串口已经连接，请给单板上电，若已经上电，请断电后重新上电。
+################################## ---- 10%
+################################# ---- 20%
+################################# ---- 30%
+################################# ---- 40%
+################################# ---- 50%
+################################# ---- 60%
+################################# ---- 70%
+################################# ---- 80%
+################################# ---- 90%
+################################ ---- 100%
+Boot download completed!
+     
+
+System startup
+
+Uncompress Ok!
+
+U-Boot 2016.11 (Sep 15 2019 - 16:13:08 +0800)hi3559av100
+
+Relocation Offset is: 1770d000
+Relocating to 5ff0d000, new gd at 5fe6ce00, sp at 5fe6cdf0
+MMC:   ** First descriptor is NOT a primary desc on 0:1 **
+MMC/SD Card:
+    MID:         0x90
+    Read Block:  512 Bytes
+    Write Block: 512 Bytes
+    Chip Size:   7456M Bytes (High Capacity)
+    Name:        "H8G4a"
+    Chip Type:   MMC
+    Version:     5.1
+    Speed:       200000000Hz
+    Bus Width:   8bit
+    Mode:        HS400ES
+hisi-sdhci: 0 (eMMC)
+In:    serial
+Out:   serial
+Err:   serial
+Net:   gmac0, gmac1
+Error: gmac1 address not set.
+
+start download process.
+
+Boot started successfully!
+
+Send command:	mmc write 0x0 0x41000000 0x0 0x251
+
+MMC write: dev # 0, block # 0, count 593 ... 593 blocks written: OK
+[EOT](OK)
+Fastboot burnt successfully!
+waiting phy ready, it will take 8s.
+
+Send command:	setenv serverip 192.168.200.40
+[EOT](OK)
+
+Send command:	setenv ethaddr 00:10:ad:20:81:70
+
+Warning: gmac0 MAC addresses don't match:
+Address in SROM is         00:10:ad:20:81:70
+Address in environment is  00:10:ab:20:81:70
+[EOT](OK)
+
+Send command:	setenv ipaddr 192.168.200.88
+[EOT](OK)
+
+Send command:	setenv netmask 255.255.255.0
+[EOT](OK)
+
+Send command:	setenv gatewayip 192.168.200.1
+[EOT](OK)
+
+Send command:	getinfo ddrfree
+getinfo - print hardware information
+
+Usage:
+getinfo bootmode - get start memeory type e.g. nand/spi etc
+getinfo nand - get nand flash information
+getinfo spi - get spi flash information
+getinfo version - get system version
+
+getinfo - print hardware information
+
+Usage:
+getinfo bootmode - get start memeory type e.g. nand/spi etc
+getinfo nand - get nand flash information
+getinfo spi - get spi flash information
+getinfo version - get system version
+
+[EOT](ERROR)
+	Tftp server Download Home switched to <E:\IOE\Object\Hi3559AV100R001C02SPC030\Burn\Image\hi3559_emmc_image_multi-core_arm64>
+
+Send command:	mw.b 0x41000000 0xFF 0x855600
+[EOT](OK)
+
+Send command:	tftp 0x41000000 uImage_hi3559av100_multi-core
+ETH0: PHY(phyaddr=1, rgmii) link UP: DUPLEX=FULL : SPEED=1000M
+MAC:   00-10-AD-20-81-70
+Using gmac0 device
+TFTP from server 192.168.200.40; our IP address is 192.168.200.88
+Filename 'uImage_hi3559av100_multi-core'.
+Load address: 0x41000000
+Loading: *T ##########a####################################################################################
+	 ############################################################################################
+	 #############################################################################################
+	 ############################################################################################
+	 ############################################################################################
+	 ###############################################################################################
+	 ###########################################################################################
+	 ###############################################################################################
+	 ######################################################################################
+	 ###############
+	 1.3 MiB/s
+done
+Bytes transferred = 8737858 (855442 hex)
+[EOT](OK)
+
+Send command:	crc32 41000000 855442
+crc32 for 41000000 ... 41855441 ==> ff0a8677
+[EOT](OK)
+
+Send command:	mmc write 0x0 0x41000000 0x800 0x42ab
+
+MMC write: dev # 0, block # 2048, count 17067 ... 17067 blocks written: OK
+[EOT](OK)Partition kernel burned successfully!
+	Tftp server Download Home switched to <E:\IOE\Object\Hi3559AV100R001C02SPC030\Burn\Image\hi3559_emmc_image_multi-core_arm64>
+
+Send command:	mw.b 0x41000000 0xFF 0xff8600
+[EOT](OK)
+
+Send command:	tftp 0x41000000 rootfs_hi3559av100_96M.ext4
+ETH0: PHY(phyaddr=1, rgmii) link UP: DUPLEX=FULL : SPEED=1000M
+MAC:   00-10-AD-20-81-70
+Using gmac0 device
+TFTP from server 192.168.200.40; our IP address is 192.168.200.88
+Filename 'rootfs_hi3559av100_96M.ext4'.
+Load address: 0x41000000
+Loading: *##########################################################################################
+	 ###############################################################################################
+	 ###########################################################################################
+	 #############################################################################################
+	 ################################################################################################
+	 #########################################################################################
+	 ############################################################################################
+	 ###########################################################################################
+	 ##################################################################################
+	 ####################################################################################
+	 #######################################################################################
+	 ###################################################################################
+	 ####################################################################################
+	 ###################################################################################
+	 ###################################################################################
+	 ######################################################################################
+	 #####################################################################################
+	 ##############################################
+	 7.3 MiB/s
+done
+Bytes transferred = 16745856 (ff8580 hex)
+[EOT](OK)
+
+Send command:	crc32 41000000 ff8580
+crc32 for 41000000 ... 41ff857f ==> 268744d6
+[EOT](OK)
+
+Send command:	mmc write.ext4sp 0x0 0x41000000 0x5800 0x30000
+
+MMC write ext4 sparse: dev # 0, block # 22528, count 196608 ... Writing at 22544 blk# --   0% complete.Writing at 28848 blk# --   1% complete.Writing at 45232 blk# --   5% complete.Writing at 48896 blk# --   6% complete.Writing at 50800 blk# --   7% complete.Writing at 54448 blk# --   8% complete.Writing at 57968 blk# --   9% complete.Writing at 64288 blk# --  10% complete.Writing at 69360 blk# --  11% complete.Writing at 70096 blk# --  12% complete.Writing at 74864 blk# --  13% complete.Writing at 83008 blk# --  15% complete.Writing at 86464 blk# --  16% complete.Writing at 415744 blk# -- 100% complete.
+sparse: 15 MB / 96 MB.
+[EOT](OK)
+Partition rootfs burned successfully!
+Partition burnt completed!
+
+Send command:	reset
+reset success!
+Current Serial port selection: COM3
+Current Serial port selection: COM3
+Current Serial port selection: COM3
+Current Serial port selection: COM3
+
+串口已经连接，请给单板上电，若已经上电，请断电后重新上电。
+################################## ---- 10%
+################################# ---- 20%
+################################# ---- 30%
+################################# ---- 40%
+################################# ---- 50%
+################################# ---- 60%
+################################# ---- 70%
+################################# ---- 80%
+################################# ---- 90%
+################################ ---- 100%
+Boot download completed!
+     
+
+System startup
+
+Uncompress Ok!
+
+U-Boot 2016.11 (Sep 15 2019 - 16:13:08 +0800)hi3559av100
+
+Relocation Offset is: 1770d000
+Relocating to 5ff0d000, new gd at 5fe6ce00, sp at 5fe6cdf0
+MMC:   ** First descriptor is NOT a primary desc on 0:1 **
+MMC/SD Card:
+    MID:         0x90
+    Read Block:  512 Bytes
+    Write Block: 512 Bytes
+    Chip Size:   7456M Bytes (High Capacity)
+    Name:        "H8G4a"
+    Chip Type:   MMC
+    Version:     5.1
+    Speed:       200000000Hz
+    Bus Width:   8bit
+    Mode:        HS400ES
+hisi-sdhci: 0 (eMMC)
+In:    serial
+Out:   serial
+Err:   serial
+Net:   gmac0, gmac1
+Error: gmac1 address not set.
+
+start download process.
+
+Boot started successfully!
+
+Send command:	mmc write 0x0 0x41000000 0x0 0x251
+
+MMC write: dev # 0, block # 0, count 593 ... 593 blocks written: OK
+[EOT](OK)
+Fastboot burnt successfully!
+waiting phy ready, it will take 8s.
+
+Send command:	setenv serverip 192.168.200.40
+[EOT](OK)
+
+Send command:	setenv ethaddr 00:10:ad:20:81:70
+
+Warning: gmac0 MAC addresses don't match:
+Address in SROM is         00:10:ad:20:81:70
+Address in environment is  00:10:ab:20:81:70
+[EOT](OK)
+Send command:	setenv ipaddr 192.168.200.88
+[EOT](OK)
+
+Send command:	setenv netmask 255.255.255.0
+[EOT](OK)
+
+Send command:	setenv gatewayip 192.168.200.1
+[EOT](OK)
+
+Send command:	getinfo ddrfree
+getinfo - print hardware information
+
+Usage:
+getinfo bootmode - get start memeory type e.g. nand/spi etc
+getinfo nand - get nand flash information
+getinfo spi - get spi flash information
+getinfo version - get system version
+
+getinfo - print hardware information
+
+Usage:
+getinfo bootmode - get start memeory type e.g. nand/spi etc
+getinfo nand - get nand flash information
+getinfo spi - get spi flash information
+getinfo version - get system version
+
+[EOT](ERROR)
+	Tftp server Download Home switched to <E:\IOE\Object\Hi3559AV100R001C02SPC030\Burn\Image\hi3559_emmc_image_multi-core_arm64>
+
+Send command:	mw.b 0x41000000 0xFF 0x855600
+[EOT](OK)
+
+Send command:	tftp 0x41000000 uImage_hi3559av100_multi-core
+ETH0: PHY(phyaddr=1, rgmii) link UP: DUPLEX=FULL : SPEED=1000M
+MAC:   00-10-AD-20-81-70
+Using gmac0 device
+TFTP from server 192.168.200.40; our IP address is 192.168.200.88
+Filename 'uImage_hi3559av100_multi-core'.
+Load address: 0x41000000
+Loading: *###############################################################################################
+	 #######################################################################################
+	 #############################################################################################
+	 ##############################################################################################
+	 #############################################################################################
+	 ##########################################################################################
+	 #########################################################################################
+	 ############################################################################################
+	 #####################################################################################
+	 ##################
+	 6.1 MiB/s
+done
+Bytes transferred = 8737858 (855442 hex)
+[EOT](OK)
+
+Send command:	crc32 41000000 855442
+crc32 for 41000000 ... 41855441 ==> ff0a8677
+[EOT](OK)
+
+Send command:	mmc write 0x0 0x41000000 0x800 0x42ab
+
+MMC write: dev # 0, block # 2048, count 17067 ... 17067 blocks written: OK
+[EOT](OK)
+Partition kernel burned successfully!
+	Tftp server Download Home switched to <E:\IOE\Object\Hi3559AV100R001C02SPC030\Burn\Image\hi3559_emmc_image_multi-core_arm64>
+
+Send command:	mw.b 0x41000000 0xFF 0xff8600
+[EOT](OK)
+
+Send command:	tftp 0x41000000 rootfs_hi3559av100_96M.ext4
+ETH0: PHY(phyaddr=1, rgmii) link UP: DUPLEX=FULL : SPEED=1000M
+MAC:   00-10-AD-20-81-70
+Using gmac0 device
+TFTP from server 192.168.200.40; our IP address is 192.168.200.88
+Filename 'rootfs_hi3559av100_96M.ext4'.
+Load address: 0x41000000
+Loading: *#############################################################################################
+	 #################################################################################################
+	 #############################################################################################
+	 ##########################################################################################
+	 ################################################################################################
+	 ##########################################################################################
+	 #############################################################################################
+	 ##########################################################################################
+	 ####################################################################################
+	 ####################################################################################
+	 #####################################################################################
+	 ####################################################################################
+	 ###################################################################################
+	 #########################################################################################
+	 ##################################################################################
+	 ###################################################################################
+	 ######################################################################################
+	 ############################################
+	 7.4 MiB/s
+done
+Bytes transferred = 16745856 (ff8580 hex)
+[EOT](OK)
+
+Send command:	crc32 41000000 ff8580
+crc32 for 41000000 ... 41ff857f ==> 268744d6
+[EOT](OK)
+
+Send command:	mmc write.ext4sp 0x0 0x41000000 0xa800 0x30000
+
+MMC write ext4 sparse: dev # 0, block # 43008, count 196608 ... Writing at 43024 blk# --   0% complete.Writing at 49328 blk# --   1% complete.Writing at 65712 blk# --   5% complete.Writing at 69376 blk# --   6% complete.Writing at 71280 blk# --   7% complete.Writing at 74928 blk# --   8% complete.Writing at 78448 blk# --   9% complete.Writing at 84768 blk# --  10% complete.Writing at 89840 blk# --  11% complete.Writing at 90576 blk# --  12% complete.Writing at 95344 blk# --  13% complete.Writing at 103488 blk# --  15% complete.Writing at 106944 blk# --  16% complete.Writing at 436224 blk# -- 100% complete.
+sparse: 15 MB / 96 MB.
+[EOT](OK)
+Partition rootfs burned successfully!
+Partition burnt completed!
+
+Send command:	reset
+reset success!
+
+串口已经连接，请给单板上电，若已经上电，请断电后重新上电。
+################################## ---- 10%
+################################# ---- 20%
+################################# ---- 30%
+################################# ---- 40%
+################################# ---- 50%
+################################# ---- 60%
+################################# ---- 70%
+################################# ---- 80%
+################################# ---- 90%
+################################ ---- 100%
+Boot download completed!
+     
+
+System startup
+
+Uncompress Ok!
+
+U-Boot 2016.11 (Sep 15 2019 - 16:13:08 +0800)hi3559av100
+
+Relocation Offset is: 1770d000
+Relocating to 5ff0d000, new gd at 5fe6ce00, sp at 5fe6cdf0
+MMC:   ** First descriptor is NOT a primary desc on 0:1 **
+MMC/SD Card:
+    MID:         0x90
+    Read Block:  512 Bytes
+    Write Block: 512 Bytes
+    Chip Size:   7456M Bytes (High Capacity)
+    Name:        "H8G4a"
+    Chip Type:   MMC
+    Version:     5.1
+    Speed:       200000000Hz
+    Bus Width:   8bit
+    Mode:        HS400ES
+hisi-sdhci: 0 (eMMC)
+In:    serial
+Out:   serial
+Err:   serial
+Net:   gmac0, gmac1
+Error: gmac1 address not set.
+
+start download process.
+
+Boot started successfully!
+
+Send command:	mmc write 0x0 0x41000000 0x0 0x251
+
+MMC write: dev # 0, block # 0, count 593 ... 593 blocks written: OK
+[EOT](OK)
+Fastboot burnt successfully!
+waiting phy ready, it will take 8s.
+
+Send command:	setenv serverip 192.168.200.40
+[EOT](OK)
+
+Send command:	setenv ethaddr 00:10:ad:20:81:70
+
+Warning: gmac0 MAC addresses don't match:
+Address in SROM is         00:10:ad:20:81:70
+Address in environment is  00:10:ab:20:81:70
+[EOT](OK)
+
+Send command:	setenv ipaddr 192.168.200.88
+[EOT](OK)
+
+Send command:	setenv netmask 255.255.255.0
+[EOT](OK)
+
+Send command:	setenv gatewayip 192.168.200.1
+[EOT](OK)
+
+Send command:	getinfo ddrfree
+getinfo - print hardware information
+
+Usage:
+getinfo bootmode - get start memeory type e.g. nand/spi etc
+getinfo nand - get nand flash information
+getinfo spi - get spi flash information
+getinfo version - get system version
+
+getinfo - print hardware information
+
+Usage:
+getinfo bootmode - get start memeory type e.g. nand/spi etc
+getinfo nand - get nand flash information
+getinfo spi - get spi flash information
+getinfo version - get system version
+
+[EOT](ERROR)
+	Tftp server Download Home switched to <E:\IOE\Object\Hi3559AV100R001C02SPC030\Burn\Image\hi3559_emmc_image_multi-core_arm64>
+
+Send command:	mw.b 0x41000000 0xFF 0x855600
+[EOT](OK)
+
+Send command:	tftp 0x41000000 uImage_hi3559av100_multi-core
+ETH0: PHY(phyaddr=1, rgmii) link UP: DUPLEX=FULL : SPEED=1000M
+MAC:   00-10-AD-20-81-70
+Using gmac0 device
+TFTP from server 192.168.200.40; our IP address is 192.168.200.88
+Filename 'uImage_hi3559av100_multi-core'.
+Load address: 0x41000000
+Loading: *#########################################################################################
+	 #########################################################################################
+	 #############################################################################################
+	 #########################################################################################
+	 ##############################################################################################
+	 ############################################################################################
+	 ############################################################################################
+	 ############################################################################################
+	 #######################################################################################
+	 ###############
+	 6.3 MiB/s
+done
+Bytes transferred = 8737858 (855442 hex)
+[EOT](OK)
+
+Send command:	crc32 41000000 855442
+crc32 for 41000000 ... 41855441 ==> ff0a8677
+[EOT](OK)
+
+Send command:	mmc write 0x0 0x41000000 0x800 0x42ab
+
+MMC write: dev # 0, block # 2048, count 17067 ... 17067 blocks written: OK
+[EOT](OK)
+Partition kernel burned successfully!
+	Tftp server Download Home switched to <E:\IOE\Object\Hi3559AV100R001C02SPC030\Burn\Image\hi3559_emmc_image_multi-core_arm64>
+
+Send command:	mw.b 0x41000000 0xFF 0xff8600
+[EOT](OK)
+
+Send command:	tftp 0x41000000 rootfs_hi3559av100_96M.ext4
+ETH0: PHY(phyaddr=1, rgmii) link UP: DUPLEX=FULL : SPEED=1000M
+MAC:   00-10-AD-20-81-70
+Using gmac0 device
+TFTP from server 192.168.200.40; our IP address is 192.168.200.88
+Filename 'rootfs_hi3559av100_96M.ext4'.
+Load address: 0x41000000
+Loading: *##############################################################################################
+	 #############################################################################################
+	 #############################################################################################
+	 ############################################################################################
+	 ##############################################################################################
+	 ##########################################################################################
+	 ############################################################################################
+	 ###########################################################################################
+	 ####################################################################################
+	 ######################################################################################
+	 ###################################################################################
+	 #####################################################################################
+	 ####################################################################################
+	 ##################################################################################
+	 ##################################################################################
+	 ####################################################################################
+	 ######################################################################################
+	 #############################################
+	 7.5 MiB/s
+done
+Bytes transferred = 16745856 (ff8580 hex)
+[EOT](OK)
+
+Send command:	crc32 41000000 ff8580
+crc32 for 41000000 ... 41ff857f ==> 268744d6
+[EOT](OK)
+
+Send command:	mmc write.ext4sp 0x0 0x41000000 0xa800 0x30000
+
+MMC write ext4 sparse: dev # 0, block # 43008, count 196608 ... Writing at 43024 blk# --   0% complete.Writing at 49328 blk# --   1% complete.Writing at 65712 blk# --   5% complete.Writing at 69376 blk# --   6% complete.Writing at 71280 blk# --   7% complete.Writing at 74928 blk# --   8% complete.Writing at 78448 blk# --   9% complete.Writing at 84768 blk# --  10% complete.Writing at 89840 blk# --  11% complete.Writing at 90576 blk# --  12% complete.Writing at 95344 blk# --  13% complete.Writing at 103488 blk# --  15% complete.Writing at 106944 blk# --  16% complete.Writing at 436224 blk# -- 100% complete.
+sparse: 15 MB / 96 MB.
+[EOT](OK)
+Partition rootfs burned successfully!
+Partition burnt completed!
+
+Send command:	reset
+reset success!
+Can not connect to the Serial Port! It may be in use.
+Can not connect to the Serial Port! It may be in use.

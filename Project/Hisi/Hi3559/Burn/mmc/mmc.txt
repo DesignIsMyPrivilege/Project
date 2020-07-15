@@ -1,0 +1,69 @@
+mw.b 0x44000000 0xFF 0x100000
+tftp 0x44000000 u-boot-hi3559av100.bin
+mmc write 0x0 0x44000000 0x0 0x250
+
+mw.b 0x44000000 0xFF 0x100000
+tftp 0x44000000 u-boot-hi3559av100.bin
+mmc write 0x0 0x44000000 0x0 0x251
+
+mw.b 0x44000000 0xFF 0x855600
+tftp 0x44000000 uImage_hi3559av100_multi-core
+mmc write 0x0 0x44000000 0x800 0x42ab
+
+mw.b 0x44000000 0xFF 0xff8600
+tftp 0x44000000 rootfs_hi3559av100_96M.ext4
+mmc write.ext4sp 0x0 0x44000000 0xa800 0x30000
+
+
+
+################################################################
+setenv bootargs 'mem=1024M console=ttyAMA0,115200 root=/dev/mmcblk0p3 rootwait rw rootfstype=ext4 blkdevparts=mmcblk0:1M(boot),20M(kernel),200M(rootfs)'
+setenv bootcmd 'mmc read 0 0x44000000 0x800 0x42ab;bootm 0x44000000'
+saveenv
+reset
+################################################################# 
+
+mmc write 0x0 0x41000000 0x0 0x251
+setenv serverip 192.168.200.40
+setenv ethaddr 00:10:ad:20:81:70
+setenv ipaddr 192.168.200.88
+setenv netmask 255.255.255.0
+setenv gatewayip 192.168.200.1
+getinfo ddrfree
+
+mw.b 0x41000000 0xFF 0x855600
+tftp 0x41000000 uImage_hi3559av100_multi-core
+mmc write 0x0 0x41000000 0x800 0x42ab
+
+mw.b 0x41000000 0xFF 0xff8600
+tftp 0x41000000 rootfs_hi3559av100_96M.ext4
+mmc write.ext4sp 0x0 0x41000000 0x5800 0x30000
+
+
+
+
+
+
+
+arch=arm
+baudrate=115200
+board=hi3559av100
+board_name=hi3559av100
+bootargs=mem=512M console=ttyAMA0,115200 root=/dev/mmcblk0p3 rw rootfstype=ext4 blkdevparts=mmcblk0:1M(boot),20M(kernel),200M(rootfs),5G(Linux)
+bootcmd=mmc read 0 0x44000000 0x800 0x42ab;bootm 0x44000000
+bootdelay=2
+cpu=armv8
+ethact=gmac0
+ethaddr=00:10:ab:20:81:70
+fileaddr=44000000
+filesize=ff8580
+gatewayip=192.168.200.1
+ipaddr=192.168.200.88
+netmask=255.255.255.0
+serverip=192.168.200.40
+soc=hi3559av100
+stderr=serial
+stdin=serial
+stdout=serial
+vendor=hisilicon
+verify=n
