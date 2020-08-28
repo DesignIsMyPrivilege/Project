@@ -1,5 +1,3 @@
-
-
 # ARM硬件基础
 
 ## ARM基础概述
@@ -651,6 +649,10 @@ Inter-integrated Circuit：内部整合电路，用在按键、显示、转换�
 ## SPI
 
 Serial Peripheral Interface ：串行外设接口，主要应用在EEPROM、FLASH、实时时钟、AD转换器，还有数字信号处理器和数字信号解码器之间
+
+串行同步全双工总线，至少需要四根线：SDO（数据输出）、SDI（数据输入）、SCLK（时钟）、CS（片选）
+
+以主从方式工作，
 
 ## PWM/WatchDog/RTC（三者都属于时钟）
 
