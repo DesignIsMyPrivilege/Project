@@ -1,7 +1,8 @@
 # 嵌入式学习1
 ## 工具的学习
 ### SSH（Secure Shell）的远程登陆
-　　服务端使用sshd命令
+　　服务端使用sshd命
+      （例如在要被访问的Linux机器上通过`sudo apt install openssh-server`安装sshd服务端程序）
 　　客户端（client）SecureCRT实现SSH，通过ip密码登录
 
 ### Zmodem实现windows和Linux之间的文件传输
