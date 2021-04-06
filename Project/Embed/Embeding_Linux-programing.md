@@ -390,6 +390,70 @@ int main(){
 }
 ```
 
+## 进程
+
+### 多进程
+
+```c
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <sys/wait.h>
+
+int main()
+{
+    printf("%s\n", "我是鸣人！");
+    int pid = fork();
+    // 由父进程产生子进程1
+    if (pid != 0) // 进入父进程
+    {
+        int status;
+        int result = wait(&status);
+        // 父进程等待子进程1执行完后的返回结果
+        if (result == -1 || status != 0)
+        {
+            printf("%s\n", "可恶，又失败了，再来一次！");
+            return -1;
+        } else
+        {
+            printf("%s\n", "我负责性质变化！");
+            // 父进程的执行内容
+        }
+    } else // 进入子进程1
+    {
+        int second_pid = fork();
+        // 由子进程1产生子进程2
+        if (second_pid != 0) 
+        {
+            int new_status;
+            int new_result = wait(&new_status);
+            // 子进程1等待子进程2执行完后的返回结果
+            if (new_result == -1 || new_status != 0)
+            {
+                exit(-1);
+            } else
+            {
+                printf("%s\n", "我负责形态变化！");
+                // 子进程1执行的内容
+                exit(0);
+                // 子进程1正常执行完毕返回0
+            }
+        } else
+        {
+            // 进入子进程2
+            printf("%s\n", "我负责产生查克拉！");
+            // 子进程2执行的内容
+            exit(0);
+            // 子进程2正常执行完毕返回0
+        }
+        
+    }
+    return 0;
+}
+```
+
+利用`fork()`返回的进程标识ID，我们可以在子进程中执行和父进程中不同的指令；但如果我们想要运行完全不同的程序，这种方法可能就不是最好的。此时，我们可以借用`execve()`函数。
+
 ### 进程通信
 
 #### 概述
@@ -864,3 +928,4 @@ int main(){
 ##### 信号灯
 
 信号量集合（可以包含多个信号量），IPC对象时一个信号灯集（多个信号量）
+

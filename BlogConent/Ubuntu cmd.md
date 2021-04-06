@@ -9,7 +9,7 @@ python3 --version#查看python3版本
 
 ```shell
 useradd -m username -s /bin/bash#添加用户，并创建家目录、指定shell，默认配置给用户shell较老，不适用
-password username#修改用户的密码，对于已有密码用户相当于修改密码，对于新创建用户相当于添加密码
+passwd username#修改用户的密码，对于已有密码用户相当于修改密码，对于新创建用户相当于添加密码
 cat /etc/passwd#查看用户
 #按照分号划分，一共有7个字段
 #用户名:加密的口令或口令占位符:UID（用户ID）:GID（组ID）:comment:主目录：登陆的shell

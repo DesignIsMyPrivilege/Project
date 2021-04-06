@@ -59,6 +59,7 @@ YUV420分为YUV420p、YUV420sp两种格式
 
 [^u]:Chrominance
 [^v]:Chroma
+[参考]:https://www.cnblogs.com/soniclq/archive/2012/02/02/2335974.html
 
 ***
 
