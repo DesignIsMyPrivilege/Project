@@ -155,9 +155,11 @@ export PYTHONPATH="/home/q7/Project/Hisi/model_convert/caffe/python:$PYTHONPATH"
 
 ### 常见错误
 
-1. No module named skimage.io，解决办法：`pip install scikit-image`
+1. `No module named skimage.io，解决办法：`
 
-2. ImportError: No module named google.protobuf.internal，解决办法：
+   `pip install scikit-image`
+
+2. `ImportError: No module named google.protobuf.internal，解决办法：`
 
    ```bash
    #没有anaconda: 
@@ -175,13 +177,55 @@ export PYTHONPATH="/home/q7/Project/Hisi/model_convert/caffe/python:$PYTHONPATH"
 
 4. 编译 pycaffe时报错：fatal error: numpy/arrayobject.h没有那个文件或目录，解决办法：`sudo apt install python-numpy`
 
-5. caffe/blob.hpp:9:34: fatal error: caffe/proto/caffe.pb.h: 没有那个文件或目录，解决办法：
+5. `caffe/blob.hpp:9:34: fatal error: caffe/proto/caffe.pb.h: 没有那个文件或目录 解决办法：`
 
    ```bash
    protoc src/caffe/proto/caffe.proto --cpp_out=.
    mkdir include/caffe/proto
    mv src/caffe/proto/caffe.pb.h include/caffe/proto
    ```
+
+6. `./include/caffe/util/mkl_alternate.hpp:14:19: fatal error: cblas.h: 没有那个文件或目录没 解决办法：`
+
+   ```shell
+   sudo apt install libatlas-base-dev
+   ```
+
+7. `./include/caffe/util/db_lmdb.hpp:8:18: fatal error: lmdb.h: 没有那个文件或目录 解决办法：`
+
+   ```shell
+   sudo apt install libgflags-dev libgoogle-glog-dev liblmdb-dev
+   ```
+
+8. `./include/caffe/util/math_functions.hpp:7:26: fatal error: glog/logging.h: 没有那个文件或目录 解决办法：`
+
+   ```shell
+   sudo apt install libgoogle-glog-dev
+   ```
+
+9. `/usr/bin/ld: warning: libopencv_imgproc.so.3.4, needed by /home/q7/Software/Driver/opencv_install/opencv-3.4.2/lib/libopencv_imgcodecs.so, may conflict with libopencv_imgproc.so.2.4 解决办法：`
+
+   opencv版本冲突，如果之前执行了`libopencv-dev`的安装命令，通过`sudo apt --purge remove libopencv-dev`卸载冲版本的opencv即可。
+   
+10. **Caffe编译时提示 CUDNN 版本不兼容的解决办法**
+    在编译一些比较老的版本的 caffe 的时候可能会出现 CUDNN 版本不兼容的问题。比如编译 faster rcnn，就会提示如下错误：
+
+    ```shell
+    error: too few arguments to function ‘cudnnStatus_t
+    cudnnSetConvolution2dDescriptor(cudnnConvolutionDescriptor_t, 
+    int, int, int, int, int, int, cudnnConvolutionMode_t, cudnnDataType_t)’
+    ```
+
+
+    这是由于 CUDNN 的版本不兼容导致的。这时只需要将 CUDNN 相关的一些文件换成新版 caffe 中的文件就可以解决这个问题了。具体来说就是将下面这些文件进行替换即可。
+
+    ```shell
+    cp /latest caffe/src/caffe/layers/cudnn_* /your older version caffe/src/caffe/layers/
+    cp /latest caffe/include/caffe/layers/cudnn_* /your older version caffe/include/caffe/layers/
+    cp /latest caffe/include/caffe/util/cudnn.hpp /your older version caffe/include/caffe/util/
+    ```
+
+    原文链接：https://blog.csdn.net/kuweicai/article/details/103798810
 
 [1]:https://github.com/BVLC/caffe	"git clone https://github.com/BVLC/caffe"
 [2]:http://caffe.berkeleyvision.org/install_apt.html	"官方指导"
