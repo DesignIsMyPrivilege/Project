@@ -25,6 +25,16 @@ sudo /etc/init.d/nmbd restart ## 重启samba服务
 
 　　在window文件资源栏中输入`\\ip`即可，或者通过工具中的网络映射，把共享文件夹映射为一个盘符
 
+配置例子：
+
+```shell
+[share]
+    comment = Printer Drivers
+    path = /xxx     #共享的目录
+    browseable = yes
+    writable = yes
+```
+
 ***
 
 ## 程序的学习
